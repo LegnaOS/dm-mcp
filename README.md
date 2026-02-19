@@ -16,8 +16,25 @@
 
 ## 📦 快速开始
 
+### Windows 用户推荐安装路径
+
+为了避免路径问题，强烈建议将项目放在简单的路径下：
+
+- ✅ 推荐：`C:\dm-mcp`
+- ✅ 推荐：`D:\dm-mcp`
+- ❌ 不推荐：`C:\Users\你的用户名\Documents\项目\dm-mcp`（路径太长，可能有中文）
+
 ### 1. 克隆项目
 
+**Windows 用户（推荐）：**
+```bash
+# 打开命令提示符（CMD）或 PowerShell
+cd C:\
+git clone https://github.com/LegnaOS/dm-mcp.git
+cd dm-mcp
+```
+
+**macOS/Linux 用户：**
 ```bash
 git clone https://github.com/LegnaOS/dm-mcp.git
 cd dm-mcp
@@ -29,6 +46,8 @@ cd dm-mcp
 npm install
 ```
 
+> 💡 如果没有安装 Node.js，请先从 [nodejs.org](https://nodejs.org/) 下载安装（推荐 LTS 版本）
+
 ### 3. 构建项目
 
 ```bash
@@ -37,6 +56,17 @@ npm run build
 
 ### 4. 验证安装
 
+**Windows 用户：**
+```bash
+# 在 Git Bash 中运行
+bash scripts/verify-setup.sh
+
+# 或者手动检查
+dir dist
+dir dm_fw
+```
+
+**macOS/Linux 用户：**
 ```bash
 ./scripts/verify-setup.sh
 ```
@@ -45,11 +75,60 @@ npm run build
 
 ## 🔧 配置 MCP 客户端
 
+> 📚 **完整配置指南**：查看 [MCP 客户端配置指南](docs/MCP-CLIENTS.md) 了解所有支持的编辑器（Kiro、Claude Desktop、Cursor、VS Code、Windsurf、Zed、Cody 等）的详细配置方法。
+
+### 快速配置示例
+
+以下是 Kiro IDE 和 Claude Desktop 的快速配置示例。其他编辑器请查看[完整配置指南](docs/MCP-CLIENTS.md)。
+
 ### Kiro IDE
+
+#### Windows 用户配置示例
+
+假设你将项目安装在 `C:\dm-mcp`：
 
 1. 打开或创建 `.kiro/settings/mcp.json`
 
-2. 添加以下配置：
+2. 添加以下配置（**注意：Windows 路径使用双反斜杠 `\\` 或单斜杠 `/`**）：
+
+```json
+{
+  "mcpServers": {
+    "dm3": {
+      "command": "node",
+      "args": ["C:/dm-mcp/dist/index.js"],
+      "env": {
+        "DM3_PROJECTS_DIR": "C:/dm-mcp/projects"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "dm3_list_projects",
+        "dm3_search_docs",
+        "dm3_get_api_reference"
+      ]
+    }
+  }
+}
+```
+
+或者使用双反斜杠：
+
+```json
+{
+  "mcpServers": {
+    "dm3": {
+      "command": "node",
+      "args": ["C:\\dm-mcp\\dist\\index.js"],
+      "env": {
+        "DM3_PROJECTS_DIR": "C:\\dm-mcp\\projects"
+      },
+      "disabled": false
+    }
+  }
+}
+```
+
+#### macOS/Linux 用户配置示例
 
 ```json
 {
@@ -77,9 +156,34 @@ npm run build
 
 ### Claude Desktop
 
-1. 编辑配置文件：
-   - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-   - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+#### Windows 用户配置
+
+1. 编辑配置文件：`%APPDATA%\Claude\claude_desktop_config.json`
+   
+   快速打开方式：
+   - 按 `Win + R`
+   - 输入 `%APPDATA%\Claude`
+   - 找到 `claude_desktop_config.json`
+
+2. 添加配置：
+
+```json
+{
+  "mcpServers": {
+    "dm3": {
+      "command": "node",
+      "args": ["C:/dm-mcp/dist/index.js"],
+      "env": {
+        "DM3_PROJECTS_DIR": "C:/dm-mcp/projects"
+      }
+    }
+  }
+}
+```
+
+#### macOS 用户配置
+
+1. 编辑配置文件：`~/Library/Application Support/Claude/claude_desktop_config.json`
 
 2. 添加配置：
 
@@ -95,6 +199,22 @@ npm run build
 ```
 
 3. 重启 Claude Desktop
+
+### 常见路径问题
+
+#### ❌ 错误示例
+```json
+"args": ["dm-mcp/dist/index.js"]  // 相对路径，不推荐
+"args": ["C:\dm-mcp\dist\index.js"]  // 单反斜杠，JSON 中会出错
+"args": ["C:\\用户\\文档\\dm-mcp\\dist\\index.js"]  // 包含中文，可能出错
+```
+
+#### ✅ 正确示例
+```json
+"args": ["C:/dm-mcp/dist/index.js"]  // 推荐：使用斜杠
+"args": ["C:\\dm-mcp\\dist\\index.js"]  // 可以：双反斜杠
+"args": ["D:/Projects/dm-mcp/dist/index.js"]  // 可以：D盘也行
+```
 
 ## 🎮 使用示例
 
