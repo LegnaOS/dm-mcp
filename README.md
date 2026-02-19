@@ -4,6 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
+[![npm version](https://img.shields.io/npm/v/dm3-mcp-server.svg)](https://www.npmjs.com/package/dm3-mcp-server)
 
 ## ✨ 特性
 
@@ -14,9 +15,23 @@
 - 🎯 **内置框架** - 无需外部 DM3 引擎，开箱即用
 - 🤖 **AI 友好** - 完美集成 Kiro、Claude Desktop 等 MCP 客户端
 
-## 📦 快速开始
+## 📦 安装
 
-### Windows 用户推荐安装路径
+### 方式一：通过 npm 安装（推荐）
+
+```bash
+npm install -g dm3-mcp-server
+```
+
+安装后，可以直接使用 `npx` 运行：
+
+```bash
+npx dm3-mcp-server
+```
+
+### 方式二：从源码安装
+
+#### Windows 用户推荐安装路径
 
 为了避免路径问题，强烈建议将项目放在简单的路径下：
 
@@ -24,7 +39,7 @@
 - ✅ 推荐：`D:\dm-mcp`
 - ❌ 不推荐：`C:\Users\你的用户名\Documents\项目\dm-mcp`（路径太长，可能有中文）
 
-### 1. 克隆项目
+#### 1. 克隆项目
 
 **Windows 用户（推荐）：**
 ```bash
@@ -40,7 +55,7 @@ git clone https://github.com/LegnaOS/dm-mcp.git
 cd dm-mcp
 ```
 
-### 2. 安装依赖
+#### 2. 安装依赖
 
 ```bash
 npm install
@@ -83,7 +98,31 @@ dir dm_fw
 
 ### Kiro IDE
 
-#### Windows 用户配置示例
+#### 使用 npx（推荐，无需关心路径）
+
+```json
+{
+  "mcpServers": {
+    "dm3": {
+      "command": "npx",
+      "args": ["dm3-mcp-server"],
+      "env": {
+        "DM3_PROJECTS_DIR": "C:/dm-projects"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "dm3_list_projects",
+        "dm3_search_docs",
+        "dm3_get_api_reference"
+      ]
+    }
+  }
+}
+```
+
+#### 使用本地安装（从源码）
+
+##### Windows 用户配置示例
 
 假设你将项目安装在 `C:\dm-mcp`：
 
@@ -128,7 +167,7 @@ dir dm_fw
 }
 ```
 
-#### macOS/Linux 用户配置示例
+##### macOS/Linux 用户配置示例
 
 ```json
 {

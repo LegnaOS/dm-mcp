@@ -1,0 +1,40 @@
+# Source files
+src/
+tests/
+scripts/
+
+# Development files
+.env
+.env.example
+.eslintrc.json
+tsconfig.json
+vitest.config.ts
+
+# Documentation (keep only essential)
+docs/DEVELOPMENT.md
+COMPLIANCE_UPDATE.md
+STATUS.md
+
+# Build artifacts
+node_modules/
+.DS_Store
+*.log
+
+# Git
+.git/
+.github/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Test files
+*.test.ts
+coverage/
+
+# Examples (optional, can include if needed)
+examples/
+
+# Makefile
+Makefile

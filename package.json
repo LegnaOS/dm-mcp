@@ -1,9 +1,19 @@
 {
   "name": "dm3-mcp-server",
   "version": "1.0.0",
-  "description": "MCP Server for DM3 Game Engine Development",
+  "description": "MCP Server for DM3 Game Engine Development - AI-powered game development tools",
   "main": "dist/index.js",
   "type": "module",
+  "bin": {
+    "dm3-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "dm_fw",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "build": "tsc && npm run copy-templates",
     "dev": "tsx watch src/index.ts",
@@ -11,16 +21,30 @@
     "copy-templates": "cp -r src/templates dist/",
     "test": "vitest run",
     "lint": "eslint src --ext .ts",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build && npm test"
   },
   "keywords": [
     "mcp",
+    "model-context-protocol",
     "dm3",
     "game-engine",
-    "lua"
+    "game-development",
+    "lua",
+    "rpg",
+    "ai-tools",
+    "code-generation"
   ],
-  "author": "",
+  "author": "LegnaOS",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LegnaOS/dm-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LegnaOS/dm-mcp/issues"
+  },
+  "homepage": "https://github.com/LegnaOS/dm-mcp#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.5.0",
     "iconv-lite": "^0.6.3",
