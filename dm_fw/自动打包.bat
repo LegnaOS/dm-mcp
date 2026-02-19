@@ -1,0 +1,1 @@
+App.exe -c Dat\\AtlasEditer.dat F:\\待处理\\君主怪物\\裁剪后\\ F:\\待处理\\君主怪物\\conf.dmpakc

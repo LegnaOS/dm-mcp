@@ -1,0 +1,43 @@
+{
+  "name": "dm3-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP Server for DM3 Game Engine Development",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && npm run copy-templates",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "copy-templates": "cp -r src/templates dist/",
+    "test": "vitest run",
+    "lint": "eslint src --ext .ts",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "dm3",
+    "game-engine",
+    "lua"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "iconv-lite": "^0.6.3",
+    "handlebars": "^4.7.8",
+    "glob": "^10.3.10",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

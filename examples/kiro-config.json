@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "dm3": {
+      "command": "node",
+      "args": ["/absolute/path/to/DM3-mcp/dist/index.js"],
+      "env": {
+        "DM3_ENGINE_PATH": "/absolute/path/to/v0.9.3",
+        "DM3_PROJECTS_DIR": "/absolute/path/to/projects",
+        "DM3_LOG_LEVEL": "info"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "dm3_list_projects",
+        "dm3_search_docs",
+        "dm3_get_api_reference",
+        "dm3_get_example",
+        "dm3_validate_lua",
+        "dm3_check_encoding"
+      ]
+    }
+  }
+}
