@@ -10,9 +10,13 @@
   "files": [
     "dist",
     "dm_fw",
+    "dm3_docs",
     "README.md",
     "LICENSE",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "docs/MCP-CLIENTS.md",
+    "docs/API.md",
+    "docs/USAGE.md"
   ],
   "scripts": {
     "build": "tsc && npm run copy-templates",

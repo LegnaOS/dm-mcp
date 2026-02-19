@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { readFileSync, readdirSync, existsSync } from "fs";
-import { join } from "path";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
 interface Tool {
   name: string;
@@ -9,7 +10,12 @@ interface Tool {
   handler: (args: any) => Promise<any>;
 }
 
-const DOCS_DIR = join(process.cwd(), "../dm3_docs_cleaned");
+// 获取当前模块的目录
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// 文档目录在项目根目录的 dm3_docs
+const DOCS_DIR = join(__dirname, "../../dm3_docs");
 
 // 搜索文档
 const searchDocsTool: Tool = {
